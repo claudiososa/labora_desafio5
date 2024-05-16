@@ -2,7 +2,11 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os"
+
+	"github.com/claudiososa/labora_desafio5/services"
+	"github.com/claudiososa/labora_desafio5/utils"
 )
 
 func showTitle(title string) {
@@ -45,7 +49,22 @@ func selectCreateOption() {
 		case 2:
 			fmt.Println("2")
 		case 3:
-			fmt.Println("3")
+			//Create Author
+			clearScreen()
+			showTitle("Create Author")
+			fmt.Println("Enter name:")
+
+			var name string
+			fmt.Scanf("%s", &name)
+
+			serviceAuthor := &services.AuthorService{}
+
+			err := serviceAuthor.Create(name)
+
+			if err == nil {
+				showTitle("Data was save.")
+			}
+
 		case 4:
 			fmt.Println("4")
 		case 0:
@@ -55,6 +74,10 @@ func selectCreateOption() {
 }
 
 func main() {
+	err := utils.InitDB()
+	if err != nil {
+		log.Fatal(err)
+	}
 	for {
 		clearScreen()
 		showTitle("Welcome to library")
