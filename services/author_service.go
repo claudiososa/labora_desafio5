@@ -13,7 +13,7 @@ type AuthorService struct{}
 func (AuthorService) Create(name string) error {
 
 	var author models.Author
-	author1 := author.NewAuthor(nil, name)
+	author1 := author.NewAuthor(0, name)
 
 	repo := &repository.AuthorRepository{}
 

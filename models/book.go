@@ -1,34 +1,44 @@
 package models
 
 type Book struct {
-	id        int
-	title     string
-	author_id int
+	Id     int
+	Title  string
+	Status string
+	Author Author
 }
 
 func (book *Book) GetId() int {
-	return book.id
+	return book.Id
 }
 
 func (book *Book) GetTitle() string {
-	return book.title
+	return book.Title
 }
 
-func (book *Book) GetAuthor_id() int {
-	return book.author_id
+func (book *Book) GetAuthor() Author {
+	return book.Author
 }
 
-func (book *Book) SetId(id int) *Book {
-	book.id = id
+func (book *Book) GetStatus() string {
+	return book.Status
+}
+
+func (book *Book) SetId(Id int) *Book {
+	book.Id = Id
 	return book
 }
 
-func (book *Book) SetTitle(title string) *Book {
-	book.title = title
+func (book *Book) SetTitle(Title string) *Book {
+	book.Title = Title
 	return book
 }
 
-func (book *Book) SetAuthor_id(author_id int) *Book {
-	book.author_id = author_id
+func (book *Book) SetAuthor(Author Author) *Book {
+	book.Author = Author
+	return book
+}
+
+func (book *Book) SetStatus(Status string) *Book {
+	book.Status = Status
 	return book
 }
